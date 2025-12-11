@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Jouw Naam</title>
+
+    <!-- Metadata -->
+    <meta name="description" content="Portfolio van Jouw Naam met projecten en contactformulier.">
+
+    <!-- (optioneel) favicon -->
+    <!-- <link rel="icon" type="image/png" href="favicon.png"> -->
+
+    <style>
+        /* Algemene stijl */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* Header / navigatie */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: #fff;
+            border-bottom: 1px solid #ddd;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        nav a {
+            margin: 0 15px;
+            color: #444;
+            font-size: 14px;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0;
+            height: 2px;
+            background: #444;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Hero / introductie (flexbox) */
+        .hero {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .hero-text {
+            flex: 2;
+        }
+
+        .hero-text h1 {
+            margin-top: 0;
+            font-size: 32px;
+        }
+
+        .hero-text p {
+            line-height: 1.6;
+        }
+
+        .hero-image {
+            flex: 1;
+            height: 250px;
+            background: #ccc url('layout.png') center/cover no-repeat;
+            border-radius: 8px;
+            animation: fadeIn 1.2s ease-in forwards;
+            opacity: 0;
+        }
+
+        /* Secties */
+        section {
+            margin-bottom: 60px;
+        }
+
+        section h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 26px;
+        }
+
+        /* Projecten / galerij (CSS grid) */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            background: #e5e5e5;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            display: block;
+        }
+
+        .gallery-item-info {
+            padding: 10px 15px;
+            font-size: 14px;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Contactformulier */
+        form {
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        input,
+        select,
+        textarea,
+        button {
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        input,
+        select,
+        textarea {
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            width: 100%;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        button {
+            padding: 10px 16px;
+            border-radius: 4px;
+            border: none;
+            background: #444;
+            color: #fff;
+            cursor: pointer;
+            align-self: flex-start;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background: #000;
+            transform: translateY(-1px);
+        }
+
+        /* Footer */
+        footer {
+            background: #222;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            margin-top: 40px;
+        }
+
+        /* Animatie */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsief (media query) */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                margin: 5px 10px 0 0;
+            }
+
+            .hero {
+                flex-direction: column;
+            }
+
+            .hero-image {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header / navigatie -->
+    <header>
+        <div class="logo">Mijn Portfolio</div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#projecten">Projecten</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+
+            <!-- Home / Introsectie -->
+            <section id="home" class="hero">
+                <div class="hero-text">
+                    <h1>Welkom, ik ben Jouw Naam</h1>
+                    <p>
+                        Dit is de beginversie van mijn portfolio. Op deze website laat ik zien wie ik ben,
+                        welke projecten ik heb gedaan en hoe je contact met mij kunt opnemen.
+                        De layout is bewust iets anders dan alles onder elkaar, zodat ik kan laten zien
+                        dat ik met flexbox, grid en responsive design kan werken.
+                    </p>
+                    <p>
+                        Kijk gerust rond: hieronder zie je mijn projecten in een fotogalerij,
+                        en onderaan de pagina staat een contactformulier.
+                    </p>
+                </div>
+                <div class="hero-image"></div>
+            </section>
+
+            <!-- Projecten / Fotogalerij -->
+            <section id="projecten">
+                <h2>Projecten</h2>
+                <p>Een selectie van mijn werk, weergegeven in een fotogalerij met CSS grid.</p>
+
+                <div class="gallery">
+                    <article class="gallery-item">
+                        <img src="layout.png" alt="Project 1">
+                        <div class="gallery-item-info">
+                            <strong>Project 1</strong><br>
+                            Korte beschrijving van wat je hebt gedaan.
+                        </div>
+                    </article>
+
+                    <article class="gallery-item">
+                        <img src="layout.png" alt="Project 2">
+                        <div class="gallery-item-info">
+                            <strong>Project 2</strong><br>
+                            Nog een voorbeeldproject met een omschrijving.
+                        </div>
+                    </article>
+
+                    <article class="gallery-item">
+                        <img src="layout.png" alt="Project 3">
+                        <div class="gallery-item-info">
+                            <strong>Project 3</strong><br>
+                            Beschrijf hier wat je hebt geleerd.
+                        </div>
+                    </article>
+
+                    <article class="gallery-item">
+                        <img src="layout.png" alt="Project 4">
+                        <div class="gallery-item-info">
+                            <strong>Project 4</strong><br>
+                            Een extra project om de galerij te vullen.
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Contact / Formulier -->
+            <section id="contact">
+                <h2>Contact</h2>
+                <p>Wil je meer weten of heb je feedback? Vul dan het formulier in.</p>
+
+                <form>
+                    <label for="naam">Naam</label>
+                    <input type="text" id="naam" name="naam" placeholder="Je naam" required>
+
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="je@email.com" required>
+
+                    <label for="onderwerp">Onderwerp</label>
+                    <select id="onderwerp" name="onderwerp">
+                        <option>Vraag</option>
+                        <option>Opmerking</option>
+                        <option>Samenwerking</option>
+                        <option>Overig</option>
+                    </select>
+
+                    <label for="bericht">Bericht</label>
+                    <textarea id="bericht" name="bericht" placeholder="Je bericht..."></textarea>
+
+                    <button type="submit">Versturen</button>
+                </form>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        © 2025 Jouw Naam – Portfolio
+    </footer>
+
+</body>
+
+</html>
